@@ -8,7 +8,7 @@ Per utilizzare questo kernel, sono necessari i seguenti strumenti:
 
 - **Virtualizzatore QEMU**:  
   ```bash
-  sudo apt install qemu
+  sudo apt install qemu-system
   ```
 - **Make**:
   ```
