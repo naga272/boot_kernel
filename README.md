@@ -55,3 +55,10 @@ Attualmente, il sistema operativo è in fase di sviluppo e mancano alcuni compon
 ### Ottimizzazioni e Debug
 - **Descrizione**: Dopo l'implementazione delle funzionalità principali, il focus si sposterà sull'ottimizzazione del codice e sul debugging.  
 - **Dettagli**: Verranno risolti eventuali bug e migliorate le prestazioni del sistema operativo.
+
+
+## Esecuzione
+- creare cartella build nella main root. 
+- fatto questo, vai in /src/icps/ e digitare il comando make (anche se esce errore, il file .a viene comunque generato.)
+- assicurarsi che il file bash build.sh ha tutti i permessi (777) e eseguilo.
+- esegui make run per avviare la vm 
