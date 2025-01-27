@@ -1,5 +1,4 @@
 #include "utilities/video/video.h"
-#include <stdarg.h>
 
 
 uint16_t set_char_terminal(char c, char colour)
@@ -66,7 +65,42 @@ void print(const char* string)
         terminal_writechar(string[i], actual_color_terminal);
 }
 
+
+void panic(const char* msg)
+{
+    int i = 0;
+    terminal_row = 0;
+    terminal_col = 0;
+
+    while (terminal_col <= VGA_HEIGHT) {
+        while (terminal_row <= VGA_WIDTH) {
+            terminal_put_char(terminal_row, terminal_col, msg[i], (BLU << 4) | BIANCO);
+            terminal_row++;
+            
+            if (msg[i] == '\n') {
+                while (terminal_row <= VGA_WIDTH) {
+                    terminal_put_char(terminal_row, terminal_col, '\0', (BLU << 4) | BIANCO);
+                    terminal_row++;
+                }
+                terminal_col++;
+                terminal_row = 0;
+            }
+
+            if (msg[i] != '\0')
+                i++;
+            
+
+        }
+        terminal_col++;
+        terminal_row = 0;
+    }
+}
+
+
 /*
+
+#include <stdarg.h>
+
 int printf(const char* vect, ...)
 {
     // printf personale (DA COMPLETARE)
@@ -128,4 +162,3 @@ void terminal_initialize()
         for (int x = 0; x < VGA_WIDTH; x++) 
             terminal_put_char(x, y, ' ', NERO);
 }
-

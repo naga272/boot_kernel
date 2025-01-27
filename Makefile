@@ -1,4 +1,4 @@
-FILES = ./build/kernel.asm.o ./build/kernel.o ./build/idt/idt.asm.o ./build/idt/idt.o ./build/memory/memory.o ./build/io/io.asm.o ./src/icps/target/i686-unknown-linux-gnu/release/libicps.a
+FILES = ./build/kernel.asm.o ./build/kernel.o ./build/idt/idt.asm.o ./build/idt/idt.o ./build/memory/heap.o ./build/io/io.asm.o ./build/stdlib/stdlib.o
 INCLUDES = -I./src
 FLAGS = -g -ffreestanding -falign-jumps -falign-functions -falign-labels -falign-loops -fstrength-reduce -fomit-frame-pointer -finline-functions -Wno-unused-function -fno-builtin -Werror -Wno-unused-label -Wno-cpp -Wno-unused-parameter -nostdlib -nostartfiles -nodefaultlibs -Wall -O0 -Iinc
 
@@ -28,24 +28,29 @@ all: ./bin/boot.bin ./bin/kernel.bin
 	i686-elf-gcc $(INCLUDES) $(FLAGS) -std=gnu99 -I/usr/include/python3.12 -c ./src/kernel.c -o ./build/kernel.o
 
 
-./build/memory/memory.o: ./src/utilities/memory/memory.c
-	# compilazione file ./src/utilities/memory/memory.c
-	i686-elf-gcc $(INCLUDES) -I./src/utilities/memory $(FLAGS) -std=gnu99 -c ./src/utilities/memory/memory.c -o ./build/memory/memory.o
+./build/memory/heap.o: ./src/utilities/memory/heap.c
+	# compilazione file ./src/utilities/memory/heap.c
+	i686-elf-gcc $(INCLUDES) -I./src/utilities/memory $(FLAGS) -std=gnu99 -c ./src/utilities/memory/heap.c -o ./build/memory/heap.o
 
 
-./build/idt/idt.asm.o: ./src/idt/idt.asm
-	# compilazione file ./src/idt/idt.asm
-	nasm -f elf -g ./src/idt/idt.asm -o ./build/idt/idt.asm.o
+./build/stdlib/stdlib.o: ./src/utilities/stdlib/stdlib.c
+	# compilazione file ./src/stdlib/stdlib.c
+	i686-elf-gcc $(INCLUDES) -I./src/utilities/stdlib/ $(FLAGS) -std=gnu99 -c ./src/utilities/stdlib/stdlib.c -o ./build/stdlib/stdlib.o
 
 
-./build/io/io.asm.o: ./src/io/io.asm
-	# compilazione file ./src/io/io.asm
-	nasm -f elf -g ./src/io/io.asm -o ./build/io/io.asm.o
+./build/idt/idt.asm.o: ./src/utilities/idt/idt.asm
+	# compilazione file ./src/utilities/idt/idt.asm
+	nasm -f elf -g ./src/utilities/idt/idt.asm -o ./build/idt/idt.asm.o
 
 
-./build/idt/idt.o: ./src/idt/idt.c
-	# compilazione file ./src/idt/idt.c
-	i686-elf-gcc $(INCLUDES) -I./src/idt $(FLAGS) -std=gnu99 -c ./src/idt/idt.c -o ./build/idt/idt.o
+./build/io/io.asm.o: ./src/utilities/io/io.asm
+	# compilazione file ./src/utilities/io/io.asm
+	nasm -f elf -g ./src/utilities/io/io.asm -o ./build/io/io.asm.o
+
+
+./build/idt/idt.o: ./src/utilities/idt/idt.c
+	# compilazione file ./src/utilities/idt/idt.c
+	i686-elf-gcc $(INCLUDES) -I./src/idt $(FLAGS) -std=gnu99 -c ./src/utilities/idt/idt.c -o ./build/idt/idt.o
 
 
 run:

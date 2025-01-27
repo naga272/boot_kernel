@@ -32,7 +32,7 @@ uint16_t terminal_row = 0;  // tiene traccia a quale riga del monitor sto scrive
 uint16_t terminal_col = 0;  // tiene traccia della colonna del monitor da dove sto scrivendo (max value VGA_WIDTH)
 
 #define VGA_WIDTH   80
-#define VGA_HEIGHT  20
+#define VGA_HEIGHT  100
 
 #endif
 
