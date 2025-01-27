@@ -12,8 +12,8 @@
 #define HEAP_BLOCK_TABLE_ENTRY_FREE 0x00
 
 // flag che utilizzo per capire se un blocco ha un blocco successivo oppure e' libero
-#define HEAP_BLOCK_HAS_NEXT 0b100000000
-#define HEAP_BLOCK_IS_FREE  0b010000000
+#define HEAP_BLOCK_HAS_NEXT 0b10000000
+#define HEAP_BLOCK_IS_FREE     0b01000000
 
 typedef unsigned char HEAP_BLOCK_TABLE_ENTRY; // rappresenta una voce della tabella degli heap
 
