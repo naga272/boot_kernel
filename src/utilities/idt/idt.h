@@ -26,18 +26,18 @@
 
 struct idt_desc
 {
-    uint16_t offset_1; // Offset bits 0 - 15
-    uint16_t selector; // Selector thats in our GDT
-    uint8_t zero; // Does nothing, unused set to zero
-    uint8_t type_attr; // Descriptor type and attributes
-    uint16_t offset_2; // Offset bits 16-31
+    u16 offset_1; // Offset bits 0 - 15
+    u16 selector; // Selector thats in our GDT
+    u8 zero; // Does nothing, unused set to zero
+    u8 type_attr; // Descriptor type and attributes
+    u16 offset_2; // Offset bits 16-31
 } __attribute__((packed));
 
  
 struct idtr_desc
 {
-    uint16_t limit; // Size of descriptor table -1
-    uint32_t base; // Base address of the start of the interrupt descriptor table
+    u16 limit; // Size of descriptor table -1
+    u32 base; // Base address of the start of the interrupt descriptor table
 } __attribute__((packed));
 
 
