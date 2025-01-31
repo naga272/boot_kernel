@@ -24,9 +24,9 @@
 #define BIANCO          15
 
 /* SET BACKBGROUND CON COLORE TESTO*/
-#define BG_BLU_C_WHITE      (BLU << 4)      | BIANCO
-#define BG_BIANCO_C_NERO    (BIANCO << 4)   | NERO
-
+#define BG_BLU_C_WHITE          (BLU << 4)      | BIANCO
+#define BG_BIANCO_C_NERO        (BIANCO << 4)   | NERO
+#define BG_NERO_C_VERDE_CHIARO  (NERO << 4)     | VERDE_CHIARO
 
 #ifdef settings_video
 
