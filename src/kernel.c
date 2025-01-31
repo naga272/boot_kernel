@@ -9,7 +9,7 @@
 
 #define settings_video
 #include "utilities/video/video.c"
-
+#undef settings_video
 
 // Dichiarazione della funzione Rust (programma main ICPS)
 extern int icps_init();
