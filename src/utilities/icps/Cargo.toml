@@ -1,0 +1,21 @@
+[package]
+name = "icps"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "icps"
+crate-type = ["staticlib"]
+path = "src/main.rs"  # Specifica il percorso del file della libreria
+
+
+# Configura il comportamento di panic come "abort"
+[profile.release]
+panic = "abort"
+
+[profile.dev]
+panic = "abort"
+
+
+[dependencies]
+regex = "1.7"
