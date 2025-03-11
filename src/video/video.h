@@ -56,11 +56,11 @@ u16 terminal_col    = 0;  // tiene traccia della colonna del monitor da dove sto
 
 #ifdef prototype_fun_print
 
+void terminal_initialize();
 uint16_t set_char_terminal(char, char);
 void terminal_put_char(int, int, char, char);
 void terminal_writechar(char, char);
 void print(const unsigned char*);
-void terminal_initialize();
 void panic(unsigned const char*);
 
 #endif
