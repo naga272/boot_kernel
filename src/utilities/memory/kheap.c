@@ -29,6 +29,12 @@ void kheap_init()
 
 void* kmalloc(size_t size) 
 {
+    /*
+    *    Funzione usata per allocare blocchi di memoria.
+    *    Ogni blocco e' grande 4096 bytes. Se vengono richiesti per esempio 50 bytes, la funzione comunque restituisce 4096.
+    *    Se vengono richiesti 4097 bytes, la funzione restituisce 2 blocchi (4096 * 2).
+    *    La dimensione dei blocchi e' definita all'interno di config.h.
+    */
     return heap_malloc(&kernel_heap, size);
 }
 
