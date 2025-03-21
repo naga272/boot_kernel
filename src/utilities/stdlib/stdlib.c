@@ -9,23 +9,3 @@ void* memset(void* ptr, int c, size_t size)
 
     return ptr;
 }
-
-
-#if defined(CODE_FOR_HEAP)
-
-void* malloc(size_t size)
-{
-    void *tmp = current_address;
-    current_address += size;
-    return tmp;
-}
-
-
-void* calloc(size_t size)
-{
-    void *tmp = current_address;
-    current_address += size;
-    return memset(tmp, 0, size);
-}
-
-#endif
